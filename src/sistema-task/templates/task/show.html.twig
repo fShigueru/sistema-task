@@ -1,0 +1,96 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Task
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="{{ path('task.edit', {'id': task.id}) }}"
+                               class="btn btn-primary">
+                                Edit
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                            <a href="{{ path('task.delete', {'id': task.id}) }}"
+                               class="btn btn-danger">
+                                Delete
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <th>#</th>
+                                    <td>{{ task.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Task</th>
+                                    <td>{{ task.task }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Descrição</th>
+                                    <td>{{ task.descricao }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Usuário que gerou</th>
+                                    <td>
+                                        {{ task.usuario }}
+                                        <br />
+                                        {{ task.email}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Usuário que alterou o status</th>
+                                    <td>
+                                        {{ task.usuario_status }}
+                                        <br />
+                                        {{ task.email_status}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td>
+                                        {% set icon = 'label-primary' %}
+                                        {% if task.tipo == 'done' %}
+                                            {% set icon = 'label-success' %}
+                                        {% elseif task.tipo == 'processada' %}
+                                            {% set icon = 'label-warning' %}
+                                        {% endif %}
+                                        <span class="label {{ icon }}">{{ task.status }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Anexos</th>
+                                    <td>
+
+                                        {% for anexo in anexos %}
+                                            <a href="{{ asset(anexo.anexo, 'files') }}" target="_blank">
+                                                <span class="lnr lnr-download"></span>
+                                            </a>
+                                            <br />
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th >Prioridade</th>
+                                    <td><span class="label label-danger">{{ task.prioridade }}</span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

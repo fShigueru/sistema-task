@@ -1,0 +1,23 @@
+{{ (error is defined) ? error }}
+
+<form method="post" action="{{ action }}" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="control-label">Nome da Task</label>
+        <input class="form-control" type="text" placeholder="Nome da Task" name="nome" value="{{ (task is defined) ? task.nome }}">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Descrição</label>
+        <input class="form-control" type="text" placeholder="Descrição" name="descricao" value="{{ (task is defined) ? task.descricao }}">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Prioridade</label>
+        <input class="form-control" type="number" name="prioridade" maxlength="5" max="5" value="{{ (task is defined) ? task.prioridade }}">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Anexos</label>
+        <input class="form-control" type="file" name="anexos[]" multiple>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">
+        <span class="glyphicon glyphicon-{{ submitIcon }}"></span>
+    </button>
+</form>

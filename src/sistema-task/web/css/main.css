@@ -1,0 +1,10 @@
+#wrapper .main {
+    float: none;
+    width: auto;
+}
+span.done {
+    cursor: pointer;
+}
+span.submeter {
+    cursor: pointer;
+}

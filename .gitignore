@@ -1,0 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+.data/
+.idea/
+src/sistema-task/vendor/
+src/sistema-task/config/parameters.yml.dist

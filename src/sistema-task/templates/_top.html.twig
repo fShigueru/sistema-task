@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="brand">
+        Desafio Dev Voxus
+    </div>
+    <div class="container-fluid">
+        <div class="navbar-btn">
+            <button type="button" class="btn-toggle-fullwidth">
+                <a href="{{ path('task.list') }}">Tasks</a>
+            </button>
+        </div>
+        <div id="navbar-menu">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>{{ app.user.username }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('logout') }}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,93 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Tasks
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="{{ path('task.new') }}" class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th style="width: 10px">#</th>
+                                <th>Prioridade</th>
+                                <th>Nome</th>
+                                <th>Descricão</th>
+                                <th>Usuário que gerou</th>
+                                <th>Usuário que alterou o status</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for task in tasks %}
+                                <tr>
+                                    <td>{{ task.id }}</td>
+                                    <td><span class="label label-danger">{{ task.prioridade }}</span></td>
+                                    <td>{{ task.task }}</td>
+                                    <td>{{ task.descricao }}</td>
+                                    <td>
+                                        {{ task.usuario }}
+                                        <br />
+                                        {{ task.email}}
+                                    </td>
+                                    <td>
+                                        {{ task.usuario_status }}
+                                        <br />
+                                        {{ task.email_status}}
+                                    </td>
+                                    <td class="label-done">
+                                        {% set icon = 'label-primary' %}
+                                        {% if task.tipo == 'done' %}
+                                            {% set icon = 'label-success' %}
+                                        {% elseif task.tipo == 'processada' %}
+                                            {% set icon = 'label-warning' %}
+                                        {% endif %}
+                                        <span class="label {{ icon }}">{{ task.status }}</span>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('task.edit',{'id': task.id}) }}">
+                                            <span class="lnr lnr-pencil"></span>
+                                        </a>
+                                        |
+                                        <a href="{{ path('task.delete',{'id': task.id}) }}">
+                                            <span class="lnr lnr-trash"></span>
+                                        </a>
+                                        |
+                                        <a href="{{ path('task.show',{'id': task.id}) }}">
+                                            <span class="lnr lnr-eye"></span>
+                                        </a>
+                                        |
+                                        <span class="done" id="{{ 'done-' ~ task.id }}">
+                                            <span class="lnr lnr-thumbs-up"></span>
+                                        </span>
+                                        |
+                                        <span class="submeter" id="{{ 'done-' ~ task.id }}">
+                                            <span class="lnr lnr-rocket"></span>
+                                        </span>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

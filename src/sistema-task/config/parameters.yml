@@ -1,0 +1,13 @@
+database:
+  driver :  'pdo_mysql'
+  host :  'db'
+  dbname :  'sistema-task'
+  user :    'root'
+  password : 'root'
+
+google:
+  api_key: 
+  api_secret: 
+
+host:
+  local: 'localhost:8087'

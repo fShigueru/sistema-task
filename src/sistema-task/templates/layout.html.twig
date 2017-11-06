@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title '' %} - Voxus Teste Desenvolvedor</title>
+
+        <!-- VENDOR CSS -->
+        <link href="{{ asset('bootstrap/css/bootstrap.min.css', 'vendor') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('font-awesome/css/font-awesome.min.css', 'vendor') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('linearicons/style.css', 'vendor') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('chartist/css/chartist-custom.css', 'vendor') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('main.css', 'css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('main.css', 'css_site') }}" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    </head>
+    <body>
+        <div id="wrapper">
+            {% if current_route != 'login' %}
+                {% include '_top.html.twig' %}
+            {% endif %}
+            <div class="main">
+                <div class="main-content">
+                    <div class="container-fluid">
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <footer>
+                <div class="container-fluid">
+                    <p class="copyright">Desenvolvido por Filipe Shigueru. &copy; 2017 All Rights Reserved.</p>
+                </div>
+            </footer>
+        </div>
+        <script src="{{ asset('jquery/jquery.min.js', 'vendor') }}"></script>
+        <script src="{{ asset('bootstrap/js/bootstrap.min.js', 'vendor') }}"></script>
+        <script src="{{ asset('main.js', 'js_site') }}"></script>
+    </body>
+</html>

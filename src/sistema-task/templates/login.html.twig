@@ -1,0 +1,30 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <div class="vertical-align-wrap">
+        <div class="vertical-align-middle">
+            <div class="auth-box ">
+                <div class="left">
+                    <div class="content">
+                        <div class="header">
+                            <p class="lead">Dashboard Task</p>
+                        </div>
+                        <div class="bottom">
+                            <a href="{{ login_paths.google }}">
+                                <img src="{{ asset('sign-in-with-google.png', 'img')}}" width="70%" alt="Acessar com sua conta do google">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="overlay"></div>
+                    <div class="content text">
+                        <h1 class="heading">Desafio Dev Voxus</h1>
+                        <p>by Filipe Shigueru</p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

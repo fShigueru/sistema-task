@@ -1,0 +1,38 @@
+version: '2'
+services:
+    db:
+      image: mysql:5.7
+      volumes:
+        - "./.data/db:/var/lib/mysql"
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: sistema-task
+        MYSQL_USER: root
+        MYSQL_PASSWORD: root
+      ports:
+        - "33066:3306"
+
+    php:
+        image: fshigueru/php7.1
+        expose:
+            - "9000"
+        restart: always
+        volumes:
+            - "./php/conf/php.ini:/usr/local/etc/php/conf.d/custom.ini"
+            - "./src:/code"
+        links:
+            - db
+
+    nginx:
+        image: fshigueru/nginx
+        ports:
+            - "8087:80"
+        restart: always
+        volumes:
+            - "./nginx/conf:/etc/nginx/conf.d"
+            - "./src:/code"
+        links:
+            - php
+        depends_on:
+            - php
